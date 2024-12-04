@@ -1,0 +1,24 @@
+body{
+    font-family: 'Segoe UI';
+}
+#conteudo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.noticia{
+    max-width: 500px;
+    text-align: center;
+    border-bottom: 4px dotted black;
+    margin-bottom: 80px;
+    color: #585858;
+}
+.noticia p{
+    text-align: justify;
+    font-size: 20px;
+}
+.noticia h1{
+    color: #4040ec;
+    font-size: 40px;
+}

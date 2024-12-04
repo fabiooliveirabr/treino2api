@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Treinamento 2 - API</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js "></script>
+    <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+    <div id="conteudo"></div>
+    <script>
+        $(document).ready(function(){
+            $("#conteudo").html("Carregando...");
+            //Consumir dados da API
+            $.ajax({
+                url: "https://fabiooliveira.cloud/aula_api_04/",
+                method: "GET",
+                data: {api_key: "1a0c5675cab628c1ab82b7ee37e71cd9"},
+                dataType: "json",
+                success: function(resposta){
+                    $("#conteudo").html("");
+                    resposta.forEach(item => {
+                        var conteudoHtml = "";
+                        conteudoHtml += `
+                                        <div class='noticia'>
+                                            <h1> ${item.titulo} </h1>
+                                            <img src='${item.url_imagem}' height='200'> <br>
+                                            <b>Publicado em: </b> ${item.data_publicacao}
+                                            <b> Por: </b> ${item.autor} <br>
+                                            <b> Categoria: </b> ${item.categoria} <br>
+                                            <p> ${item.texto_noticia} </p>
+                                        </div>
+                                        `;
+                        $("#conteudo").append(conteudoHtml);                        
+                    });
+                },
+                error: function(){
+                    alert("Erro ao acessar API!");
+                }
+            });
+        });//Fim do DocumentReady
+    </script>
+</body>
+</html>
